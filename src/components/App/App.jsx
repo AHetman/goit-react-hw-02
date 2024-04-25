@@ -31,6 +31,8 @@ const App = () => {
     setClick({ good: 0, neutral: 0, bad: 0 });
   };
 
+  const positivePercent = Math.round((click.good / totalFeedback) * 100);
+
   return (
     <div className={css.container}>
       <Description />
@@ -41,7 +43,11 @@ const App = () => {
         resetFunction={resetFunction}
       />
       {totalFeedback > 0 ? (
-        <Feedback click={click} totalFeedback={totalFeedback} />
+        <Feedback
+          click={click}
+          totalFeedback={totalFeedback}
+          positivePercent={positivePercent}
+        />
       ) : (
         <Notification />
       )}
